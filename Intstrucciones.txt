@@ -1,0 +1,66 @@
+TRABAJO SEGUNDO CORTE - PROGRAMACIÓN BASICA
+
+
+ACTIVIDAD INDIVIDUAL O EN PAREJA
+
+
+Fecha de Entrega: 6:00 PM de 15 de Mayo de 2018
+
+
+
+ACTIVIDAD:
+
+Desarrollar un programa que permita a un prestamista a través del uso de un vector de registro,
+llevar el control de su actividad comercial, teniendo en cuenta las siguientes operaciones a realizar,
+las cuales se deben implementar a través de un menú.
+
+
+MENU DE OPERACIONES
+1. Registrar Cliente: En esta opción se cargaran los datos personales del cliente (cédula,
+nombres, apellidos, dirección, teléfono, email, actividad laboral, salario). Debe validar que
+no se repitan clientes
+2. Activar Préstamo: en esta opción debe registrar la cantidad a prestar, asignar el valor a
+cancelar por concepto de intereses, definir a partir de los datos anteriores el valor a cancelar
+en cada uno de los 4 abonos programados así: cuota 1 (40%), Cuota 2 (30%), cuota 3 (20%),
+Cuota 4(10%). Debe validar que el cliente esté registrado
+3. Abono: Se debe registrar el valor abonado y el número de la cuota (1, 2, 3 o 4). Debe
+validar que cada abono corresponda con el porcentaje asignado para cada cuota.
+4. Consultar Cliente: Se debe solicitar la cedula del cliente y visualizar su estado. Tenga en
+cuenta que debe validar que el cliente esté registrado.
+5. Eliminar Cliente: Debe a partir de la cedula del cliente eliminar la información registrada al
+cliente, esto será posible si el cliente no tiene deuda.
+6. Listar
+a. Consultar un cliente
+b. Consultar todos los registros en orden ascendente por la cedula del cliente
+c. Salir
+
+
+
+
+RECOMENDACIONES GENERALES:
+1. Colocar un encabezado del programa: con el código, nombre del estudiante y el enunciado
+del problema.
+2. El programa debe estar documentado: Se deben colocar comentarios explicando cada una
+de las partes del programa. Se deben implementar funciones, por lo menos una función por cada
+opción del menú. No utilizar variables ni vectores de manera global.
+3. Aspectos a calificar:
+o ROBUSTEZ del programa: debe contemplar todas las posibles facetas del problema
+que queremos resolver
+o CORRECTITUD del programa: la solución al problema a tratar cumple con todos los
+requerimientos especificados
+o COMPLETITUD del programa: Implementar todos los recursos para poder llegar a
+una solución satisfactoria
+o EFICIENCIA del programa: llegar a sus objetivos planteados utilizando la menor
+cantidad de recursos posibles, es decir, minimizando el uso memoria, de pasos y de
+esfuerzo humano.
+o EFICACIA del programa: alcanzar el objetivo primordial
+o Creatividad
+o Ortografía
+4. El programa fuente se debe enviar a: dfrancob@unicartagena.edu.co y
+dafrabo@yahoo.com con el asunto: “PB - Trabajo 2”. No se aceptara ningún trabajo en fecha
+y hora posterior.
+5. Cualquier indicio de copia (código de internet, de otro compañero) se tomará como fraude,
+se les colocará cero a los estudiantes involucrados y se tratará de acuerdo a lo que específica
+el reglamento estudiantil por lo que no deben existir programas similares.
+NOTA: Este trabajo tiene un valor del 40% del segundo corte. El estudiante que no cumpla con esta
+actividad en la fecha indicada se le asignará una calificación de Cero, Cero (0,0)
