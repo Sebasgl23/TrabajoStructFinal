@@ -30,7 +30,7 @@ void ActivarPrestamo();//Funcion encargada de darle prestamo al cliente
 void Abonar();//Funcion encargada de abonar pago de deuda
 void ConsultarCliente();//Funcion encargada de Consultar un cliente y decir si se encuentra registrado o no
 void EliminarCliente();//Funcion encargada de eliminar un cliente de los registros
-void MasOpciones();//Funcion encargada de mostrar las demas opciones
+bool MasOpciones();//Funcion encargada de mostrar las demas opciones, se declaro booleana para poder salir del programa cuando la variable sea verdadera
 
 
 int main ()
@@ -43,6 +43,7 @@ int main ()
 	cout<<"********************************************************\n\n\n\n\n\n"<<endl;
 	do{
 
+    
 	cout<<"\n1.-Registrar cliente"<<endl;
 	cout<<"\n2.-Activar Prestamo"<<endl;
 	cout<<"\n3.-Realizar Abono"<<endl;
@@ -56,6 +57,7 @@ int main ()
 		case 1:
 			cout<<"\nEscogio registrar cliente "<<endl;
 			RegistrarCliente(&x);//Se pasa el valor de x como puntero para poder asignar a cada espcio del registro un cliente
+			x++;
 			break;
 			
 		case 2:
@@ -79,7 +81,13 @@ int main ()
 			break;
 		case 6:
 			cout<<"\nUsted escogio mas opciones "<<endl;
-			MasOpciones();
+			if(MasOpciones())
+				b='c';
+				break;
+			
+		case 7: 
+			cout<<"\nVerificar registrados"<<endl;
+			Ver();
 			break;
 			
 			default:
@@ -88,7 +96,9 @@ int main ()
 			
 	}
 }while (b!='c');
+	cout<<"Cerraste el programa"<<endl;
 	system("PAUSE");
+	
 	
 }
 
@@ -113,7 +123,7 @@ void RegistrarCliente(int *cont)
 	fflush(stdin);
 	
 	cout<<"\nIngrese el telefono de el cliente a registrar"<<endl;
-	cin>>amigo[*cont].cedula;
+	cin>>amigo[*cont].telefono;
 	fflush(stdin);
 	
 	cout<<"\nIngrese el correo de el cliente a registrar"<<endl;
@@ -128,9 +138,23 @@ void RegistrarCliente(int *cont)
 	cin>>amigo[*cont].salario;
 	fflush(stdin);
 	
-	cont++;
 	
 	
+}
+
+void Ver(){
+	
+	for (int h=0;h<2;h++)
+	{
+	cout<<"\nNombre:  "<<amigo[h].nombre;
+	cout<<"\nApeliido:  "<<amigo[h].apellidos;
+	cout<<"\nCedula:  "<<amigo[h].cedula;
+	cout<<"\nDireccion:  "<<amigo[h].direccion;
+	cout<<"\nTelefono:  "<<amigo[h].telefono;
+	cout<<"\nCorreo:  "<<amigo[h].email;
+	cout<<"\nActividad laboral:  "<<amigo[h].actividadlaboral;
+	cout<<"\nSalario:  "<<amigo[h].salario;
+	}
 }
 
 void ConsultarCliente()
@@ -179,6 +203,7 @@ void ActivarPrestamo()
 	{
 		if(amigo[g].cedula==cedula3)
 		{
+			
 			cout<<"\nEl valor a cancelar en la primera cuota es de:  "<<prestamo*0.4<<endl;
 			amigo[g].cuota1=prestamo*0.4;
 			cout<<"\nEl valor a cancelar en la segunda cuota es de:  "<<prestamo*0.3<<endl;
@@ -188,6 +213,7 @@ void ActivarPrestamo()
 			cout<<"\nEl valor a cancelar en la ultima cuota es de :  "<<prestamo*0.1<<endl;
 			amigo[g].cuota4=prestamo*0.1;
 			veri=1;
+			amigo[g].prestamo=prestamo;
 	
 }
 }
@@ -217,8 +243,11 @@ void Abonar()
 	{
 		if(amigo[e].cedula==cedula4)
 		{
-			if (cuota==1)
+			if(amigo[e].cuota1!=0)
 			{
+				if (cuota==1)
+			{
+			
 				if(abono==amigo[e].cuota1)
 				{
 					cout<<"\nEl abono se realizo correctamente"<<endl;
@@ -228,8 +257,15 @@ void Abonar()
 				{
 					cout<<"\nEl valor a abonar es diferente a la cuota"<<endl;
 				}
-				
 			}
+		}
+			else if(amigo[e].cuota1==0)
+			{
+				cout<<"\nEl usuario ya no debe la cuota solicitada"<<endl;
+			}
+			
+			if(amigo[e].cuota2=!0)
+			{
 			if (cuota==2)
 			{
 				if(abono==amigo[e].cuota2)
@@ -241,8 +277,14 @@ void Abonar()
 				{
 					cout<<"\nEl valor a abonar es diferente a la cuota"<<endl;
 				}
-				
 			}
+			}
+			else if(amigo[e].cuota2==0)
+			{
+				cout<<"\nEl usuario ya no debe la cuota solicitada"<<endl;
+			}
+			if(amigo[e].cuota3=!0)
+			{
 			if (cuota==3)
 			{
 				if(abono==amigo[e].cuota3)
@@ -254,8 +296,15 @@ void Abonar()
 				{
 					cout<<"\nEl valor a abonar es diferente a la cuota"<<endl;
 				}
-				
 			}
+			}
+			else if(amigo[e].cuota3==0)
+			{
+				cout<<"\nEl usuario ya no debe la cuota solicitada"<<endl;
+			}
+			
+			if(amigo[e].cuota4=!0)
+			{
 			if (cuota==4)
 			{
 				if(abono==amigo[e].cuota4)
@@ -269,6 +318,11 @@ void Abonar()
 				}
 				
 			}
+		}
+		else if(amigo[e].cuota4==0)
+		{
+			cout<<"\nEl usuario ya no debe la cuota solicitada"<<endl;
+		}
 			
 			verif=1;
 }
@@ -321,27 +375,31 @@ void EliminarCliente()
 	
 }
 
-void MasOpciones()
+bool MasOpciones()
 {
 	
-	int b;
+	char b;
+	bool exit=false;
+	
 	cout<<"\nA.-Consultar un cliente"<<endl;
 	cout<<"\nB.-Consultar todos los registros en orden ascendente por la cedula del cliente"<<endl;
 	cout<<"\nC.-Salir del programa"<<endl;
 	cin>>b;
 			
-	if(b==toupper('a'))
+			if(b=='a' || b=='A')
+			{
+				ConsultarCliente();
+			}
+			else if(b=='b' || b=='B')
 			{
 				cout<<""<<endl;
 			}
-			else if(b==toupper('b'))
+			else if(b=='c' || b=='C')
 			{
-				cout<<""<<endl;
+
+				exit=true;
 			}
-			else if(b==toupper('c'))
-			{
-				exit;
-			}
+			return exit;
 }
 
 
