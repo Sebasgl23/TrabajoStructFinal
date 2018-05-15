@@ -52,6 +52,8 @@ int main ()
 	cout<<"\n6.-Mas opciones"<<endl;
 	cout<<"\n"<<endl;
 	cin>>a;
+	
+	system("cls");
 	switch(a)
 	{
 		case 1:
@@ -84,12 +86,7 @@ int main ()
 			if(MasOpciones())
 				b='c';
 				break;
-			
-		case 7: 
-			cout<<"\nVerificar registrados"<<endl;
-			Ver();
-			break;
-			
+	
 			default:
 			cout<<"\n La opcion ingresada no es valida, por favor ingrese una opcion valida"<<endl;//para que en caso de que ingrese cualquier otra cosa
 		 
