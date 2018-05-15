@@ -1,10 +1,12 @@
 #include <iostream>
-#include <string.h>
+#include <string.h>//Libreria para usar funciones de cadenas
+#include <stdlib.h>//Libreria para cambiar color a la consola
+
 #define MAX 1000
 
 using namespace std;
 
-struct cliente{
+struct cliente{//Declaracion de la estructura de datos
 	
 	long cedula;
 	char nombre[20];
@@ -21,34 +23,39 @@ struct cliente{
 	long cuota4;
 };
 
-cliente amigo[MAX];
+cliente amigo[MAX];//
 
-void RegistrarCliente();
-void ActivarPrestamo();
-void Abonar();
-void ConsultarCliente();
-void EliminarCliente();
-void Listar();
-void MasOpciones();
+void RegistrarCliente(int *cont);//Funcion encargada de registrar cada cliente
+void ActivarPrestamo();//Funcion encargada de darle prestamo al cliente
+void Abonar();//Funcion encargada de abonar pago de deuda
+void ConsultarCliente();//Funcion encargada de Consultar un cliente y decir si se encuentra registrado o no
+void EliminarCliente();//Funcion encargada de eliminar un cliente de los registros
+void MasOpciones();//Funcion encargada de mostrar las demas opciones
 
 
 int main ()
 {
-	int a,b;
-	do{
+	system ("color 1");//Se encarga de cambiar el color a la consola
+	int a,b,x=0;
 	
+	cout<<"********************************************************"<<endl;
+	cout<<"*          PRESTAMOS UNIVERSIDAD DE CARTAGENA          *"<<endl;
+	cout<<"********************************************************\n\n\n\n\n\n"<<endl;
+	do{
+
 	cout<<"\n1.-Registrar cliente"<<endl;
 	cout<<"\n2.-Activar Prestamo"<<endl;
 	cout<<"\n3.-Realizar Abono"<<endl;
 	cout<<"\n4.-Consultar Cliente"<<endl;
 	cout<<"\n5.-Eliminar Cliente"<<endl;
 	cout<<"\n6.-Mas opciones"<<endl;
+	cout<<"\n"<<endl;
 	cin>>a;
 	switch(a)
 	{
 		case 1:
 			cout<<"\nEscogio registrar cliente "<<endl;
-			RegistrarCliente();
+			RegistrarCliente(&x);//Se pasa el valor de x como puntero para poder asignar a cada espcio del registro un cliente
 			break;
 			
 		case 2:
@@ -76,7 +83,7 @@ int main ()
 			break;
 			
 			default:
-			cout<<"\n La opcion ingresada no es valida, por favor ingrese una opcion valida"<<endl;
+			cout<<"\n La opcion ingresada no es valida, por favor ingrese una opcion valida"<<endl;//para que en caso de que ingrese cualquier otra cosa
 		 
 			
 	}
@@ -85,41 +92,40 @@ int main ()
 	
 }
 
-void RegistrarCliente()
+void RegistrarCliente(int *cont)
 {
-	int cont;
 	
 	fflush(stdin);
 	cout<<"\nIngrese el nombre de el ccliente a registrar"<<endl;
-	gets(amigo[cont].nombre);
+	gets(amigo[*cont].nombre);
 	fflush(stdin);
 	
 	cout<<"\nIngrese los apellidos de el cliente a registrar"<<endl;
-	gets(amigo[cont].apellidos);
+	gets(amigo[*cont].apellidos);
 	fflush(stdin);
 	
 	cout<<"\nIngrese la cedula de el cliente a registrar"<<endl;
-	cin>>amigo[cont].cedula;
+	cin>>amigo[*cont].cedula;
 	fflush(stdin);
 	
 	cout<<"\nIngrese la direccion de el cliente a registrar"<<endl;
-	gets(amigo[cont].direccion);
+	gets(amigo[*cont].direccion);
 	fflush(stdin);
 	
 	cout<<"\nIngrese el telefono de el cliente a registrar"<<endl;
-	cin>>amigo[cont].cedula;
+	cin>>amigo[*cont].cedula;
 	fflush(stdin);
 	
 	cout<<"\nIngrese el correo de el cliente a registrar"<<endl;
-	gets(amigo[cont].email);
+	gets(amigo[*cont].email);
 	fflush(stdin);
 	
 	cout<<"\nIngrese la actividad laboral de el cliente a registrar"<<endl;
-	gets(amigo[cont].actividadlaboral);
+	gets(amigo[*cont].actividadlaboral);
 	fflush(stdin);
 	
 	cout<<"\nIngrese el salario de el cliente a registrar"<<endl;
-	cin>>amigo[cont].salario;
+	cin>>amigo[*cont].salario;
 	fflush(stdin);
 	
 	cont++;
